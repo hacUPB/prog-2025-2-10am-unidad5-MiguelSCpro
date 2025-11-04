@@ -37,7 +37,7 @@ def histograma_vocales():
 # ---------------- FUNCIONES PARA CSV ----------------
 def mostrar_csv():
     with open(CSV_FILE, "r", encoding="utf-8", errors="ignore") as f:
-        lector = csv.reader(f, delimiter=";+")
+        lector = csv.reader(f, delimiter=";")
         for i, fila in enumerate(lector):
             print(fila)
             if i == 14:
@@ -63,9 +63,11 @@ def calcular_estadisticas():
         return
     datos.sort()
     n = len(datos)
+    mediana = datos[n // 2] if n % 2 else (datos[n // 2 - 1] + datos[n // 2]) / 2
     promedio = sum(datos) / n 
     print("Cantidad:", n)
     print("Promedio:", promedio)
+    print("Mediana:",mediana)
     print("Máximo:", max(datos))
     print("Mínimo:", min(datos))
 
